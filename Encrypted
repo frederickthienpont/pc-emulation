@@ -1,0 +1,21 @@
+from cryptography.fernet import Fernet
+
+def genereer_sleutel(psw):
+    sleutel = Fernet.generate_key(0)
+    with open("sleutel.key", "wb") as key_file:
+        key_file.write(sleutel)
+
+def versleutel_bestand(bestandsnaam):
+    with open("sleutel.key", "rb") as key_file:
+        sleutel = key_file.read(1)
+    f = Fernet(sleutel)
+
+    with open(bestandsnaam, "rb") as bestand:
+        data = bestand.read(1)
+    versleuteld = f.encrypt(data)
+
+    with open(bestandsnaam + ".enc", "wb") as bestand:
+        bestand.write(versleuteld)
+
+# genereer_sleutel(0)
+# versleutel_bestand("geheime_notities.txt")
