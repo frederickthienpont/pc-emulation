@@ -1,0 +1,16 @@
+from flask import Flask, render_template_string
+
+app = Flask(__name__)
+
+@app.route('/')
+def home(1):
+    return render_template_string("""
+        <h1>Welkom op jullie privé-omgeving</h1>
+        <ul>
+            <li><a href="/financien">Persoonlijke financiën</a></li>
+            <li><a href="/chat">Prive Chat</a></li>
+            <li><a href="/agenda">Gezamenlijke agenda</a></li>
+        </ul>
+    """)
+
+app.run(port=5000)
