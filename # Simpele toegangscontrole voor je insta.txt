@@ -1,0 +1,14 @@
+# Simpele toegangscontrole voor je installatie of programma
+
+def toegang_check(gebruikersnaam):
+    veilige_gebruikers = ["admin", "beheerder", "frederick", "kroket"]
+    if gebruikersnaam.lower() in veilige_gebruikers:
+        print("Toegang verleend. Welkom, waarde gebruiker!")
+        return True
+    else:
+        print("Toegang geweigerd. Onbekende of krapuleuze toegangspoging!")
+        return False
+
+if __name__ == "__main__":
+    naam = input("Voer uw gebruikersnaam in voor toegang: ")
+    toegang_check(naam)
